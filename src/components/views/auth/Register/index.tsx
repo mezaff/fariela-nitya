@@ -5,7 +5,7 @@ import { FormEvent, useState } from "react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import authServices from "@/services/auth";
-import AuthLayout from "@/components/layouts/Navbar/AuthLayout";
+import AuthLayout from "@/components/layouts/AuthLayout";
 const RegisterView = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
