@@ -24,11 +24,16 @@
         gap: 10px;
         padding: 10px 15px;
         transition: 0.3s;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
         &__icon {
           font-size: 32px;
         }
         &:hover {
-          background-color: #fff;
+          background-color: #bbb;
           color: #000;
           transition: 0.3s;
         }

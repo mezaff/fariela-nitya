@@ -8,6 +8,11 @@
     margin-top: 5px;
     border: none;
     outline: none;
+    border-radius: 8px;
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    -ms-border-radius: 8;
+    -o-border-radius: 8;
     &:disabled {
       opacity: 0.7;
     }

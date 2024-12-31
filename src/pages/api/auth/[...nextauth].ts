@@ -4,6 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { loginWithGoogle, signIn } from "@/services/auth/services";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
+import { log } from "console";
 
 const authOptions: NextAuthOptions = {
   session: {
@@ -24,6 +25,7 @@ const authOptions: NextAuthOptions = {
           password: string;
         };
         const user: any = await signIn(email);
+
         if (user) {
           const passwordConfirm = await compare(password, user.password);
           if (passwordConfirm) {
@@ -47,17 +49,22 @@ const authOptions: NextAuthOptions = {
         token.fullName = user.fullName;
         token.phone = user.phone;
         token.role = user.role;
+        token.id = user.id;
+        token.image = user.image;
       }
       if (account?.provider === "google") {
         const data = {
           fullname: user.name,
           email: user.email,
+          image: user.image,
           type: "google",
         };
         await loginWithGoogle(data, (data: any) => {
           token.email = data.email;
           token.fullName = data.fullName;
           token.role = data.role;
+          token.image = data.image;
+          token.id = data.id;
         });
       }
 
@@ -75,6 +82,12 @@ const authOptions: NextAuthOptions = {
       }
       if ("role" in token) {
         session.user.role = token.role;
+      }
+      if ("image" in token) {
+        session.user.image = token.image;
+      }
+      if ("id" in token) {
+        session.user.id = token.id;
       }
 
       const accessToken = jwt.sign(token, process.env.NEXTAUTH_SECRET || "", {

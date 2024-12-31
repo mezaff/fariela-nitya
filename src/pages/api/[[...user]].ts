@@ -58,8 +58,6 @@ export default async function handler(
       token,
       process.env.NEXTAUTH_SECRET || "",
       async (err: any, decoded: any) => {
-        console.log(decoded);
-
         if (decoded && decoded.role === "admin") {
           await deleteData("users", user[1], (result: boolean) => {
             if (result) {
