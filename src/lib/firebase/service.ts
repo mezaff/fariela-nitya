@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 import app from "./init";
 import {
+  deleteObject,
   getDownloadURL,
   getStorage,
   ref,
@@ -105,14 +106,15 @@ export async function deleteData(
 }
 
 export async function uploadFile(
-  userId: string,
+  id: string,
   file: any,
+  newName: string,
+  collection: string,
   callback: Function
 ) {
   if (file) {
     if (file.size < 1048576) {
-      const newName = "profile." + file.name.split(".")[1];
-      const storageRef = ref(storage, `images/users/${userId}/${newName}`);
+      const storageRef = ref(storage, `images/${collection}/${id}/${newName}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
         "state_changed",
@@ -134,4 +136,15 @@ export async function uploadFile(
     }
   }
   return true;
+}
+
+export async function deleteFile(url: string, callback: Function) {
+  const storageRef = ref(storage, url);
+  await deleteObject(storageRef)
+    .then(() => {
+      callback(true);
+    })
+    .catch(() => {
+      callback(false);
+    });
 }

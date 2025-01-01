@@ -18,5 +18,11 @@
     -moz-border-radius: 20;
     -ms-border-radius: 20;
     -o-border-radius: 20;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
