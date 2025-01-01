@@ -4,7 +4,7 @@ import styles from "./Users.module.scss";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import ModalUpdateUser from "./ModalUpdateUser";
 import ModalDeleteUser from "./ModalDeleteUser";
-import { User } from "@/type/user.type";
+import { User } from "@/types/user.type";
 import { useSession } from "next-auth/react";
 
 type PropTypes = {

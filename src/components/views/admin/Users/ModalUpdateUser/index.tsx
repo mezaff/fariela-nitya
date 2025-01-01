@@ -3,8 +3,7 @@ import Input from "@/components/ui/Input";
 import Modal from "@/components/ui/Modal";
 import Select from "@/components/ui/Select";
 import userServices from "@/services/user";
-import { User } from "@/type/user.type";
-import { useSession } from "next-auth/react";
+import { User } from "@/types/user.type";
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 
 type Propstypes = {
