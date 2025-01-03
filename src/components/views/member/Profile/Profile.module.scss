@@ -38,6 +38,8 @@
           font-size: 64px;
           font-weight: bold;
           text-transform: uppercase;
+          object-fit: cover;
+          object-position: center;
         }
         &__label {
           margin-top: 20px;
@@ -78,6 +80,11 @@
         -moz-border-radius: 8;
         -ms-border-radius: 8;
         -o-border-radius: 8;
+        &__form {
+          &__input {
+            margin: 20px 0;
+          }
+        }
       }
       &__password {
         width: 25%;
@@ -87,6 +94,11 @@
         -webkit-border-radius: 8;
         -moz-border-radius: 8;
         -ms-border-radius: 8;
+        &__form {
+          &__input {
+            margin: 20px 0;
+          }
+        }
       }
     }
   }
